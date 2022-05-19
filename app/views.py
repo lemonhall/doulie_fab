@@ -7,6 +7,12 @@ from flask import redirect
 from . import appbuilder, db
 from .models import Folders, Urls
 from .scraping import Scraping
+import os
+from flask import send_from_directory
+
+@appbuilder.app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(appbuilder.app.root_path, 'static'),'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 """
     Create your Model based REST API::
